@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.228,=C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.128,C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.437,D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\hid.lib=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.140,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\hidlibrary.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.893,D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\Project1PCH1.h=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\SetupKeysGUIPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.953,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\pnp.c</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.318,C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.727,D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\SetupAPI.Lib=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.334,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\SetupAPI.Lib</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\hid.lib</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.318,C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Unit1.cpp=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.259,=C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.318,C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Unit1.h=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.020,C:\Users\BBS\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\SetupKeysGUI.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.331,D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\main.h=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\setupkeys.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.996,D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\main.c=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\setupkeys.c</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.902,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\hid.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.933,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\main.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.921,=D:\YandexDisk\workspace\STM8-keyboard\SetupKeysGUI\main.c</Transaction>
+  </Transactions>
+</BorlandProject>
