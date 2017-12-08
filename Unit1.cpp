@@ -1065,6 +1065,7 @@ void Sync_Settings_to_panel(t_KeySettings KeySettings, uint32_t key_num)
 	if (KeySettings.modifiers & HID_KEYBOARD_MODIFIER_RIGHTGUI)
 		g_KeySettings_Panel[key_num].CheckBox_rwin->Checked = true;
 	else g_KeySettings_Panel[key_num].CheckBox_rwin->Checked = false;
+	Application->ProcessMessages();
 }
 
 void Key_Settings_changed(uint32_t key_num)
@@ -1101,6 +1102,8 @@ void DeviceDisconnect(void)
 	Form1->Label_status->Caption = L"Не подключено";
 	Form1->Label_status->Font->Color = clRed;
 	Form1->Button_write->Enabled = false;
+	Form1->Button_Save_to_File->Enabled = false;
+	Form1->Button_Load_from_File->Enabled = false;
 	/// Reset settings
 	for(i=0;i< MAX_KEY_COUNT;i++) {
 		memset(&g_KeySettings_Device[i], 0, sizeof(t_KeySettings));
@@ -1111,7 +1114,7 @@ void DeviceDisconnect(void)
 
 void Device_ReadSettings(void)
 {
-	int ret = 0;
+	int ret;
 	int i;
 	/// Disconnect
 	DeviceDisconnect();
@@ -1125,6 +1128,9 @@ void Device_ReadSettings(void)
 	is_connected = 1;
 	Form1->Label_status->Caption = L"Подключено";
 	Form1->Label_status->Font->Color = clGreen;
+	Form1->Button_Save_to_File->Enabled = true;
+	Form1->Button_Load_from_File->Enabled = true;
+	Application->ProcessMessages();
 	/// Read settings
 	for(i=0;i< MAX_KEY_COUNT;i++)
 	{
@@ -1260,6 +1266,61 @@ void Device_WriteSettings(void)
 		Form1->Label_status->Font->Color = clGreen;
 	}
 	Form1->Button_write->Enabled = true;
+}
+
+void Save_Settings_to_File(t_KeySettings KeySettings[], uint8_t key_count)
+{
+	int i;
+	UnicodeString temp_str;
+	if (!KeySettings) return;
+	if (!key_count) return;
+
+	if (Form1->SaveDialog1->Execute(NULL))
+	{
+		TIniFile *INI = new TIniFile(Form1->SaveDialog1->FileName);
+		for(i=0;i<key_count;i++)
+		{
+			if (KeySettings[i].active) {
+				temp_str.printf(L"Button %d", i);
+				INI->WriteString(temp_str, "UsagePage", KeySettings[i].usage_page);
+				INI->WriteString(temp_str, "Modifiers", KeySettings[i].modifiers);
+				INI->WriteString(temp_str, "Scancode", KeySettings[i].scancode);
+			}
+		}
+		INI->UpdateFile();
+		delete INI;
+		Form1->Label_status->Caption = L"Настройки сохранены";
+		Form1->Label_status->Font->Color = clBlue;
+		temp_str.printf(L"Файл %s сохранён.", Form1->SaveDialog1->FileName);
+		MessageBox(NULL, temp_str.c_str(), L"Файл сохранён", 0);
+	}
+}
+
+void Load_Settings_from_File(t_KeySettings KeySettings[], uint8_t key_count)
+{
+	int i;
+	UnicodeString temp_str;
+	if (!KeySettings) return;
+	if (!key_count) return;
+
+	if (Form1->OpenDialog1->Execute(NULL))
+	{
+		TIniFile *INI = new TIniFile(Form1->OpenDialog1->FileName);
+		for(i=0;i<key_count;i++)
+		{
+			temp_str.printf(L"Button %d", i);
+			KeySettings[i].usage_page = (uint16_t)wcstoul(INI->ReadString(temp_str, "UsagePage", "0").c_str(), NULL, 10);
+			KeySettings[i].modifiers = (uint16_t)wcstoul(INI->ReadString(temp_str, "Modifiers", "0").c_str(), NULL, 10);
+			KeySettings[i].scancode = (uint16_t)wcstoul(INI->ReadString(temp_str, "Scancode", "0").c_str(), NULL, 10);
+			KeySettings[i].active = 1;
+			KeySettings[i].save_flag = 1;
+			Sync_Settings_to_panel(KeySettings[i], i);
+		}
+		delete INI;
+		Form1->Label_status->Caption = L"Настройки загружены";
+		Form1->Label_status->Font->Color = clBlue;
+	}
+
 }
 
 void __fastcall TForm1::Button_readClick(TObject *Sender)
@@ -1517,6 +1578,18 @@ void __fastcall TForm1::ComboBox_kb_key15Change(TObject *Sender)
 void __fastcall TForm1::Button_writeClick(TObject *Sender)
 {
 	Device_WriteSettings();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button_Save_to_FileClick(TObject *Sender)
+{
+	Save_Settings_to_File(g_KeySettings_Device, MAX_KEY_COUNT);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button_Load_from_FileClick(TObject *Sender)
+{
+	Load_Settings_from_File(g_KeySettings_Device, MAX_KEY_COUNT);
 }
 //---------------------------------------------------------------------------
 

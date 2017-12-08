@@ -17,7 +17,6 @@ object Form1: TForm1
   OldCreateOrder = False
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnShow = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -64,7 +63,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Button_read: TButton
-    Left = 858
+    Left = 630
     Top = 8
     Width = 112
     Height = 25
@@ -2343,12 +2342,41 @@ object Form1: TForm1
     end
   end
   object Button_write: TButton
-    Left = 976
+    Left = 748
     Top = 8
     Width = 118
     Height = 25
     Caption = #1047#1072#1087#1080#1089#1072#1090#1100' '#1085#1072#1089#1090#1088#1086#1081#1082#1080
     TabOrder = 21
     OnClick = Button_writeClick
+  end
+  object Button_Load_from_File: TButton
+    Left = 872
+    Top = 8
+    Width = 113
+    Height = 25
+    Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1080#1079' '#1092#1072#1081#1083#1072
+    TabOrder = 22
+    OnClick = Button_Load_from_FileClick
+  end
+  object Button_Save_to_File: TButton
+    Left = 991
+    Top = 8
+    Width = 104
+    Height = 25
+    Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1092#1072#1081#1083
+    TabOrder = 23
+    OnClick = Button_Save_to_FileClick
+  end
+  object SaveDialog1: TSaveDialog
+    FileName = 'settings.ini'
+    Filter = 'INI files|*.ini|ALL files|*.*'
+    Left = 1064
+    Top = 120
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'INI files|*.ini|ALL files|*.*'
+    Left = 1032
+    Top = 120
   end
 end

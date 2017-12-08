@@ -8,6 +8,9 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Dialogs.hpp>
+#include <IniFiles.hpp>
+
 //---------------------------------------------------------------------------
 
 #define MAX_KEY_COUNT   16
@@ -301,6 +304,10 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox_save_key13;
 	TCheckBox *CheckBox_save_key14;
 	TCheckBox *CheckBox_save_key15;
+	TSaveDialog *SaveDialog1;
+	TOpenDialog *OpenDialog1;
+	TButton *Button_Load_from_File;
+	TButton *Button_Save_to_File;
 	void __fastcall Button_readClick(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
@@ -338,6 +345,8 @@ __published:	// IDE-managed Components
 	void __fastcall ComboBox_sc_key15Change(TObject *Sender);
 	void __fastcall ComboBox_kb_key15Change(TObject *Sender);
 	void __fastcall Button_writeClick(TObject *Sender);
+	void __fastcall Button_Save_to_FileClick(TObject *Sender);
+	void __fastcall Button_Load_from_FileClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
